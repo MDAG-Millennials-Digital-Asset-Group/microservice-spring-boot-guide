@@ -12,3 +12,43 @@ spec:
         protocol: HTTP
       hosts:
         - "*"
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata:
+  name: request
+spec:
+  hosts:
+    - "*"
+  gateways:
+    - mdag-gateway
+  http:
+    - match:
+        - uri:
+            exact: /hello
+        - uri:
+            exact: /request
+      route:
+        - destination:
+            host: request
+            port:
+              number: 8080
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata:
+  name: response
+spec:
+  hosts:
+    - "*"
+  gateways:
+    - mdag-gateway
+  http:
+    - match:
+        - uri:
+            exact: /api/hello
+      route:
+        - destination:
+            host: response
+            port:
+              number: 8080
