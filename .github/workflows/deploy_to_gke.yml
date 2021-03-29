@@ -18,7 +18,7 @@ env:
 
 jobs:
   request-service-setup-build-publish-deploy:
-    name: SetUp Build Publish Deploy
+    name: request-service-setup-build-publish-deploy
     runs-on: ubuntu-latest
 
     steps:
@@ -75,7 +75,7 @@ jobs:
           kubectl get services -o wide
 
   response-service-setup-build-publish-deploy:
-    name: SetUp Build Publish Deploy
+    name: response-service-setup-build-publish-deploy
     runs-on: ubuntu-latest
 
     steps:
