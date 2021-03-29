@@ -9,8 +9,10 @@ env:
   PROJECT_ID: ${{ secrets.GKE_PROJECT }}
   GKE_CLUSTER: cluster-1
   GKE_ZONE: asia-northeast3-c
+  REQUEST_SERVICE_PROJECT_PATH: containers/request-service
   REQUEST_DEPLOYMENT_NAME: request
   REQUEST_SERVICE_IMAGE: gke-request-service
+  RESPONSE_SERVICE_PROJECT_PATH: containers/response-service
   RESPONSE_DEPLOYMENT_NAME: response
   RESPONSE_SERVICE_IMAGE: gke-response-service
 
@@ -49,7 +51,7 @@ jobs:
             --tag "gcr.io/$PROJECT_ID/$REQUEST_SERVICE_IMAGE:$GITHUB_SHA" \
             --build-arg GITHUB_SHA="$GITHUB_SHA" \
             --build-arg GITHUB_REF="$GITHUB_REF" \
-            containers/request-service/.
+            $REQUEST_SERVICE_PROJECT_PATH/.
 
       # Push the Docker image to Google Container Registry
       - name: Publish
@@ -59,6 +61,7 @@ jobs:
       # Set up  Kustomize
       - name: Set up Kustomize
         run: |-
+          cd $REQUEST_SERVICE_PROJECT_PATH
           curl -sfLo kustomize https://github.com/kubernetes-sigs/kustomize/releases/download/v3.1.0/kustomize_3.1.0_linux_amd64
           chmod u+x ./kustomize
 
@@ -66,7 +69,7 @@ jobs:
       - name: Deploy
         run: |-
           ./kustomize edit set image gcr.io/PROJECT_ID/IMAGE:TAG=gcr.io/$PROJECT_ID/$REQUEST_SERVICE_IMAGE:$GITHUB_SHA
-          ./kustomize build containers/request-service/. | kubectl apply -f -
+          ./kustomize build . | kubectl apply -f -
           kubectl rollout status deployment/$DEPLOYMENT_NAME
           kubectl get services -o wide
 
@@ -104,7 +107,7 @@ jobs:
             --tag "gcr.io/$PROJECT_ID/$RESPONSE_SERVICE_IMAGE:$GITHUB_SHA" \
             --build-arg GITHUB_SHA="$GITHUB_SHA" \
             --build-arg GITHUB_REF="$GITHUB_REF" \
-            containers/response-service/.
+            $RESPONSE_SERVICE_PROJECT_PATH/.
 
       # Push the Docker image to Google Container Registry
       - name: Publish
@@ -114,6 +117,7 @@ jobs:
       # Set up  Kustomize
       - name: Set up Kustomize
         run: |-
+          cd $RESPONSE_SERVICE_PROJECT_PATH
           curl -sfLo kustomize https://github.com/kubernetes-sigs/kustomize/releases/download/v3.1.0/kustomize_3.1.0_linux_amd64
           chmod u+x ./kustomize
 
@@ -121,6 +125,6 @@ jobs:
       - name: Deploy
         run: |-
           ./kustomize edit set image gcr.io/PROJECT_ID/IMAGE:TAG=gcr.io/$PROJECT_ID/$RESPONSE_SERVICE_IMAGE:$GITHUB_SHA
-          ./kustomize build containers/request-service/. | kubectl apply -f -
+          ./kustomize build . | kubectl apply -f -
           kubectl rollout status deployment/$DEPLOYMENT_NAME
           kubectl get services -o wide
