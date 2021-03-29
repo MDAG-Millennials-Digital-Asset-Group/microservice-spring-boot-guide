@@ -25,6 +25,8 @@ spec:
   http:
     - match:
         - uri:
+            exact: /
+        - uri:
             exact: /hello
         - uri:
             exact: /request
