@@ -13,7 +13,6 @@ spec:
       hosts:
         - "*"
 ---
-
 apiVersion: networking.istio.io/v1alpha3
 kind: VirtualService
 metadata:
@@ -31,11 +30,11 @@ spec:
             exact: /request
         - uri:
             exact: /hello
-        route:
-          - destination:
-              host: request
-              port:
-                number: 8080
+      route:
+        - destination:
+            host: request
+            port:
+              number: 8080
     - match:
         - uri:
             exact: /api/hello
