@@ -68,6 +68,7 @@ jobs:
       # Deploy the Docker image to the GKE cluster
       - name: Deploy
         run: |-
+          cd $REQUEST_SERVICE_PROJECT_PATH
           kubectl apply -f deployment.yml
           kubectl apply -f service.yml
           kubectl apply -f virtualService.yml
@@ -124,6 +125,7 @@ jobs:
       # Deploy the Docker image to the GKE cluster
       - name: Deploy
         run: |-
+          cd $RESPONSE_SERVICE_PROJECT_PATH
           kubectl apply -f deployment.yml
           kubectl apply -f service.yml
           kubectl apply -f virtualService.yml
