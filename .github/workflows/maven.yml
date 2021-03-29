@@ -7,7 +7,7 @@ on:
     branches: [ main, develop ]
 
 jobs:
-  Build-Test-Package:
+  request-service-build-test-package:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
@@ -16,4 +16,15 @@ jobs:
         with:
           java-version: 15.0.1
       - name: Build with Maven
-        run: mvn -B package --file pom.xml
+        run: mvn -B package --file containers/request-service/pom.xml
+
+  response-service-build-test-package:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Set up openjdk-15
+        uses: actions/setup-java@v1
+        with:
+          java-version: 15.0.1
+      - name: Build with Maven
+        run: mvn -B package --file containers/response-service/pom.xml
