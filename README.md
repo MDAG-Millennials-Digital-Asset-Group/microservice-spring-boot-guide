@@ -1,5 +1,7 @@
 # Microservice Spring Boot Guide
 
+[![Java CI with Maven](https://github.com/MDAG-Millennials-Digital-Asset-Group/microservice-spring-boot-guide/actions/workflows/maven.yml/badge.svg)](https://github.com/MDAG-Millennials-Digital-Asset-Group/microservice-spring-boot-guide/actions/workflows/maven.yml)
+
 ***
 ## Dockerfile 
 
