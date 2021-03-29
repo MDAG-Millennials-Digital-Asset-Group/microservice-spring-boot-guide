@@ -9,12 +9,12 @@ spec:
     - mdag-gateway
   http:
     - match:
-        - uri:
-            exact: /hello
-        - uri:
-            exact: /request
-        route:
-          - destination:
-              host: request
-              port:
-                number: 8080
+      - uri:
+          exact: /hello
+      - uri:
+          exact: /request
+      route:
+        destination:
+          host: request
+          port:
+            number: 8080
