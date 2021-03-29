@@ -20,6 +20,6 @@ spec:
     spec:
       containers:
         - name: response
-          image: gcr.io/PROJECT_ID/RESPONSE_SERVICE_IMAGE:TAG
+          image: gcr.io/mdag-community/gke-response-service:$GITHUB_SHA
           ports:
             - containerPort: 8080
