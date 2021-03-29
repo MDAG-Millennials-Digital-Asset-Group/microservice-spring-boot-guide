@@ -71,7 +71,6 @@ jobs:
           cd $REQUEST_SERVICE_PROJECT_PATH
           kubectl apply -f deployment.yml
           kubectl apply -f service.yml
-          kubectl apply -f virtualService.yml
           kubectl get services -o wide
 
   response-service-setup-build-publish-deploy:
@@ -128,5 +127,4 @@ jobs:
           cd $RESPONSE_SERVICE_PROJECT_PATH
           kubectl apply -f deployment.yml
           kubectl apply -f service.yml
-          kubectl apply -f virtualService.yml
           kubectl get services -o wide
