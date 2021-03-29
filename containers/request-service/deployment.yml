@@ -18,6 +18,6 @@ spec:
     spec:
       containers:
         - name: request
-          image: gcr.io/PROJECT_ID/REQUEST_SERVICE_IMAGE:TAG
+          image: gcr.io/mdag-community/gke-request-service:$GITHUB_SHA
           ports:
             - containerPort: 8080

@@ -13,10 +13,11 @@ spec:
       hosts:
         - "*"
 ---
+
 apiVersion: networking.istio.io/v1alpha3
 kind: VirtualService
 metadata:
-  name: request
+  name: mdag
 spec:
   hosts:
     - "*"
@@ -27,25 +28,14 @@ spec:
         - uri:
             exact: /
         - uri:
-            exact: /hello
-        - uri:
             exact: /request
-      route:
-        - destination:
-            host: request
-            port:
-              number: 8080
----
-apiVersion: networking.istio.io/v1alpha3
-kind: VirtualService
-metadata:
-  name: response
-spec:
-  hosts:
-    - "*"
-  gateways:
-    - mdag-gateway
-  http:
+        - uri:
+            exact: /hello
+        route:
+          - destination:
+              host: request
+              port:
+                number: 8080
     - match:
         - uri:
             exact: /api/hello
