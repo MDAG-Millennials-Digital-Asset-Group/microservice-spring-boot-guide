@@ -18,6 +18,6 @@ spec:
     spec:
       containers:
         - name: request
-          image: gcr.io/PROJECT_ID/IMAGE:TAG
+          image: gcr.io/PROJECT_ID/REQUEST_SERVICE_IMAGE:TAG
           ports:
             - containerPort: 8080
