@@ -12,7 +12,7 @@ spec:
         - uri:
             exact: /api/hello
         route:
-          - destination:
-              host: response
-              port:
-                number: 8080
+        - destination:
+            host: response
+            port:
+              number: 8080
