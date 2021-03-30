@@ -69,7 +69,7 @@ jobs:
       - name: Deploy
         run: |-
           cd $REQUEST_SERVICE_PROJECT_PATH
-          kubectl apply -f deployment.yml
+          kubectl apply -f deployment.yml --env="GITHUB_SHA=$GITHUB_SHA"
           kubectl apply -f service.yml
           kubectl get services -o wide
 
@@ -125,6 +125,6 @@ jobs:
       - name: Deploy
         run: |-
           cd $RESPONSE_SERVICE_PROJECT_PATH
-          kubectl apply -f deployment.yml
+          kubectl apply -f deployment.yml --env="GITHUB_SHA=$GITHUB_SHA"
           kubectl apply -f service.yml
           kubectl get services -o wide
