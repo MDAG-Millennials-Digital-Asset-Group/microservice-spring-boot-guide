@@ -19,23 +19,23 @@ metadata:
   name: mdag
 spec:
   hosts:
-    - "*"
+  - "*"
   gateways:
-    - mdag-gateway
+  - mdag-gateway
   http:
-    - match:
-      - uri:
-          prefix: "/request" # service domain name
-        route:
-        - destination:
-            host: request
-            port:
-              number: 8080
-    - match:
-      - uri:
-          prefix: "/response" # service domain name
-        route:
-        - destination:
-            host: response
-            port:
-              number: 8080
+  - match:
+    - uri:
+        prefix: /request
+    route:
+    - destination:
+        host: request
+        port:
+          number: 8080
+  - match:
+    - uri:
+        prefix: /response
+    route:
+    - destination:
+        host: response
+        port:
+          number: 8080
