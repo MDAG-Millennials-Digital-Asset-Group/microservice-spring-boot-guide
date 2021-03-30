@@ -6,12 +6,12 @@ spec:
   hosts:
     - response
   http:
-    - match:
-      - uri:
-          exact: /response/hello
+  - match:
+    - uri:
+        exact: /response/hello
 
-      route:
-        destination:
-          host: response
-          port:
-            number: 8080
+    route:
+      destination:
+        host: response
+        port:
+          number: 8080

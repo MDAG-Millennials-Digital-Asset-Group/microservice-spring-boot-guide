@@ -6,14 +6,14 @@ spec:
   hosts:
     - request
   http:
-    - match:
-      - uri:
-          exact: /request/hello
-      - uri:
-          prefix: /request
+  - match:
+    - uri:
+        exact: /request/hello
+    - uri:
+        prefix: /request
 
-      route:
-        destination:
-          host: request
-          port:
-            number: 8080
+    route:
+      destination:
+        host: request
+        port:
+          number: 8080
