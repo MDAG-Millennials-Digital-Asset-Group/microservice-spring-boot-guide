@@ -4,9 +4,7 @@ metadata:
   name: request
 spec:
   hosts:
-    - "*"
-  gateways:
-    - mdag-gateway
+    - request
   http:
     - match:
       - uri:

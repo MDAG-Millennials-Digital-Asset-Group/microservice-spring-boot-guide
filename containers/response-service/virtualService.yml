@@ -4,13 +4,11 @@ metadata:
   name: response
 spec:
   hosts:
-    - "*"
-  gateways:
-    - mdag-gateway
+    - response
   http:
     - match:
       - uri:
-          exact: /api/hello
+          exact: /hello
       route:
         destination:
           host: response

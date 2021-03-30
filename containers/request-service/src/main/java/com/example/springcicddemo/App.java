@@ -40,7 +40,7 @@ public class App {
 
 		String serviceName = "response";
 		String servicePort = "8080";
-		String serviceUri = "/api/hello";
+		String serviceUri = "/hello";
 
 		String response = restTemplate.getForObject(String.format("http://%s:%s/%s", serviceName, servicePort, serviceUri), String.class);
 		return response;
