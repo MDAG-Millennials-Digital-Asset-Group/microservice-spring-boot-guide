@@ -24,16 +24,16 @@ spec:
     - mdag-gateway
   http:
     - match:
-        - uri:
-            prefix: /request # service domain name
+      - uri:
+          prefix: /request # service domain name
         route:
         - destination:
             host: request
             port:
               number: 8080
     - match:
-        - uri:
-            prefix: /response # service domain name
+      - uri:
+          prefix: /response # service domain name
       route:
         - destination:
             host: response
