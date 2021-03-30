@@ -33,7 +33,7 @@ jobs:
           java-version: 11.0.8
 
       - name: maven package
-        run: mvn -B package --file containers/request-service/pom.xml
+        run: mvn clean package --file containers/request-service/pom.xml
 
       # Setup Google Cloud CLI
       - name: Setup Google Cloud CLI
@@ -91,6 +91,14 @@ jobs:
       # Checkout Repository
       - name: Checkout Repository
         uses: actions/checkout@v2
+
+      - name: Set up openjdk-11
+        uses: actions/setup-java@v1
+        with:
+          java-version: 11.0.8
+
+      - name: maven package
+        run: mvn clean package --file containers/response-service/pom.xml
 
       # Setup Google Cloud CLI
       - name: Setup Google Cloud CLI
