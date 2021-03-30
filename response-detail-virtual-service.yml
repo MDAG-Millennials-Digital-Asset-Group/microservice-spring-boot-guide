@@ -7,8 +7,8 @@ spec:
     - response
   http:
     - match:
-        - uri:
-            exact: /response/hello
+      - uri:
+          exact: /response/hello
 
       route:
         destination:

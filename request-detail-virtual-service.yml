@@ -7,10 +7,10 @@ spec:
     - request
   http:
     - match:
-        - uri:
-            exact: /request/hello
-        - uri:
-            prefix: /request
+      - uri:
+          exact: /request/hello
+      - uri:
+          prefix: /request
 
       route:
         destination:
