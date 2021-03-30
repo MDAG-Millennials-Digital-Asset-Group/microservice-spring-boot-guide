@@ -1,17 +1,19 @@
 apiVersion: networking.istio.io/v1alpha3
 kind: VirtualService
 metadata:
-  name: response
+  name: request
 spec:
   hosts:
-    - response
+    - request
   http:
     - match:
-      - uri:
-          exact: /response/hello
+        - uri:
+            exact: /request/hello
+        - uri:
+            prefix: /request
 
       route:
         destination:
-          host: response
+          host: request
           port:
             number: 8080
