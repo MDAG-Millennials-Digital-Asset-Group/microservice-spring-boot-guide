@@ -8,9 +8,10 @@ spec:
   http:
     - match:
       - uri:
-          exact: /hello
+          exact: /request/hello
       - uri:
-          exact: /request
+          prefix: /request
+
       route:
         destination:
           host: request
