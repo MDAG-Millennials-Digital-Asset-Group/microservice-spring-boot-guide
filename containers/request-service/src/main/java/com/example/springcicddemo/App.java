@@ -38,11 +38,10 @@ public class App {
 	public String requestToOtherServer(){
 		RestTemplate restTemplate = restTemplateBuilder.build();
 
-		String serviceName = "response";
-		String servicePort = "8080";
+		String serviceName = "response:8080/response";
 		String serviceUri = "/hello";
 
-		String response = restTemplate.getForObject(String.format("http://%s:%s/%s", serviceName, servicePort, serviceUri), String.class);
+		String response = restTemplate.getForObject(String.format("http://%s/%s", serviceName, serviceUri), String.class);
 		return response;
 	}
 }
