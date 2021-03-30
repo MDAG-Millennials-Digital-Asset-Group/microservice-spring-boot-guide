@@ -69,7 +69,7 @@ jobs:
       - name: Deploy
         run: |-
           cd $REQUEST_SERVICE_PROJECT_PATH
-          ./kustomize edit set image gcr.io/PROJECT_ID/IMAGE:TAG=gcr.io/$PROJECT_ID/REQUEST_SERVICE_IMAGE:$GITHUB_SHA
+          ./kustomize edit set image gcr.io/PROJECT_ID/IMAGE:TAG=gcr.io/$PROJECT_ID/$REQUEST_SERVICE_IMAGE:$GITHUB_SHA
           ./kustomize build . | kubectl apply -f -
           kubectl rollout status deployment/$REQUEST_DEPLOYMENT_NAME
           kubectl get services -o wide
@@ -126,7 +126,7 @@ jobs:
       - name: Deploy
         run: |-
           cd $RESPONSE_SERVICE_PROJECT_PATH
-          ./kustomize edit set image gcr.io/PROJECT_ID/IMAGE:TAG=gcr.io/$PROJECT_ID/RESPONSE_SERVICE_IMAGE:$GITHUB_SHA
+          ./kustomize edit set image gcr.io/PROJECT_ID/IMAGE:TAG=gcr.io/$PROJECT_ID/$RESPONSE_SERVICE_IMAGE:$GITHUB_SHA
           ./kustomize build . | kubectl apply -f -
           kubectl rollout status deployment/$RESPONSE_DEPLOYMENT_NAME
           kubectl get services -o wide
