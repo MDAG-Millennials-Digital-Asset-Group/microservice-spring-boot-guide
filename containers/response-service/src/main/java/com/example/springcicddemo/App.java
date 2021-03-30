@@ -22,7 +22,7 @@ public class App {
 		SpringApplication.run(App.class, args);
 	}
 
-	@GetMapping("/api/hello")
+	@GetMapping("/hello")
 	public String hello(){
 		try {
 			InetAddress localHost = InetAddress.getLocalHost();

@@ -25,19 +25,15 @@ spec:
   http:
     - match:
         - uri:
-            exact: /
-        - uri:
-            exact: /request
-        - uri:
-            exact: /hello
-      route:
+            prefix: /request # service domain name
+        route:
         - destination:
             host: request
             port:
               number: 8080
     - match:
         - uri:
-            exact: /api/hello
+            prefix: /response # service domain name
       route:
         - destination:
             host: response
